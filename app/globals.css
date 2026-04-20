@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent-glow: rgba(124, 255, 178, 0.15);
+    --accent-glow-strong: rgba(124, 255, 178, 0.35);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    background: #0E0E10;
+    color: #F2F2F5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Subtle dotted grid — calm texture, barely visible */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.015) 1px,
+      transparent 0
+    );
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Focus states — accessible, on-brand */
+  :focus-visible {
+    outline: 2px solid #7CFFB2;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar — subtle, matches warm grays */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #26262D;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #36363F;
+  }
+}
+
+@layer components {
+  /* The Locdone brand mark — document with folded corner + signal dot */
+  .brand-mark {
+    @apply relative inline-block w-[22px] h-[22px] rounded-[5px] bg-bg-elevated border border-border flex-shrink-0;
+  }
+  .brand-mark::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #7CFFB2;
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    box-shadow: 0 0 8px rgba(124, 255, 178, 0.5);
+  }
+  .brand-mark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 6px;
+    background: #0E0E10;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
