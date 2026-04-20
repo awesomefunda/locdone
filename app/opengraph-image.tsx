@@ -1,7 +1,8 @@
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
-export const alt = 'Locdone — Your documents never leave this device.';
+export const alt =
+  'Locdone — Free PDF tools that run entirely in your browser. No uploads.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -33,25 +34,38 @@ export default async function OGImage() {
         >
           <div
             style={{
-              width: 52,
-              height: 52,
-              borderRadius: 12,
-              background: '#1E1E23',
+              width: 56,
+              height: 56,
+              borderRadius: 14,
+              background: '#0E0E10',
               border: '1.5px solid #36363F',
               display: 'flex',
               position: 'relative',
             }}
           >
+            {/* Document outline */}
             <div
               style={{
                 position: 'absolute',
-                top: 18,
+                top: 12,
+                left: 12,
+                width: 24,
+                height: 30,
+                border: '1.5px solid #A8A8B3',
+                borderRadius: 2,
+                background: '#1E1E23',
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                top: 26,
                 left: 18,
-                width: 14,
-                height: 14,
+                width: 8,
+                height: 8,
                 borderRadius: 9999,
                 background: '#7CFFB2',
-                boxShadow: '0 0 16px rgba(124,255,178,0.6)',
+                boxShadow: '0 0 14px rgba(124,255,178,0.7)',
               }}
             />
           </div>
@@ -75,16 +89,15 @@ export default async function OGImage() {
             flexDirection: 'column',
             gap: '8px',
             fontStyle: 'italic',
-            fontSize: 100,
+            fontSize: 92,
             letterSpacing: '-0.02em',
             lineHeight: 1.05,
             color: '#F2F2F5',
           }}
         >
-          <div>Your documents</div>
-          <div style={{ display: 'flex', gap: '22px' }}>
-            <span style={{ color: '#7CFFB2' }}>never leave</span>
-            <span>this device.</span>
+          <div>Free PDF tools.</div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '22px' }}>
+            <span style={{ color: '#7CFFB2' }}>Never uploaded.</span>
           </div>
         </div>
 
@@ -109,6 +122,17 @@ export default async function OGImage() {
                   background: '#7CFFB2',
                 }}
               />
+              <span>100% free</span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <div
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: 9999,
+                  background: '#7CFFB2',
+                }}
+              />
               <span>0 uploads</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -120,18 +144,7 @@ export default async function OGImage() {
                   background: '#7CFFB2',
                 }}
               />
-              <span>0 accounts</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <div
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: 9999,
-                  background: '#7CFFB2',
-                }}
-              />
-              <span>0 tracking</span>
+              <span>no signup</span>
             </div>
           </div>
           <div style={{ color: '#6E6E78' }}>locdone.com</div>

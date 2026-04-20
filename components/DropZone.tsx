@@ -208,15 +208,15 @@ function IdleState({
   return (
     <>
       <UploadCloud
-        size={44}
+        size={38}
         strokeWidth={1.25}
-        className="mb-5 text-text-tertiary transition-colors"
+        className="mb-4 text-text-tertiary transition-colors"
         aria-hidden
       />
-      <h2 className="mb-2 text-center font-display text-2xl italic text-text-primary">
+      <h2 className="mb-1.5 text-center font-display text-2xl italic text-text-primary">
         {title}
       </h2>
-      <p className="mb-6 max-w-xs text-center text-sm text-text-secondary">{hint}</p>
+      <p className="mb-5 max-w-xs text-center text-sm text-text-secondary">{hint}</p>
       {children}
     </>
   );
@@ -225,10 +225,10 @@ function IdleState({
 function DragState({ title, hint }: { title: string; hint: string }) {
   return (
     <>
-      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-accent/15 text-accent animate-pulse-soft">
-        <Lock size={22} strokeWidth={1.75} aria-hidden />
+      <div className="mb-4 flex h-10 w-10 animate-pulse-soft items-center justify-center rounded-full bg-accent/10 text-accent">
+        <Lock size={20} strokeWidth={1.75} aria-hidden />
       </div>
-      <h2 className="mb-2 text-center font-display text-2xl italic text-accent">
+      <h2 className="mb-1.5 text-center font-display text-2xl italic text-accent">
         {title}
       </h2>
       <p className="max-w-xs text-center text-sm text-text-secondary">{hint}</p>

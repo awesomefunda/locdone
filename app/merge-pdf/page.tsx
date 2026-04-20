@@ -38,6 +38,10 @@ export default function Page() {
       ]}
       faq={[
         {
+          q: 'Are my PDFs really not uploaded?',
+          a: 'Really. To verify: close your WiFi/internet, drop PDFs, and watch the Network tab in DevTools (F12) stay empty while merging completes.',
+        },
+        {
           q: 'Can I reorder files before merging?',
           a: 'Yes. Drag the files in the list to set the order they\'ll appear in the final PDF.',
         },

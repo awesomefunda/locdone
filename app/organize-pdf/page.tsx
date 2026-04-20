@@ -38,6 +38,10 @@ export default function Page() {
       ]}
       faq={[
         {
+          q: 'Does this tool upload my PDF?',
+          a: 'No. Everything happens in your browser. Verify by disabling WiFi/internet, then drop a PDF and make changes. Open DevTools (F12) Network tab—zero requests during processing.',
+        },
+        {
           q: 'Will I lose quality when I save?',
           a: 'No. Locdone copies the original pages byte-for-byte into the new order. Only pages you rotate or delete change; everything else stays exact.',
         },

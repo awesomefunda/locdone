@@ -12,6 +12,10 @@
     box-sizing: border-box;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,
   body {
     background: #0E0E10;
@@ -19,6 +23,7 @@
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Subtle dotted grid — calm texture, barely visible */
@@ -36,6 +41,12 @@
     z-index: 0;
   }
 
+  /* Selection — on-brand */
+  ::selection {
+    background: rgba(124, 255, 178, 0.18);
+    color: #F2F2F5;
+  }
+
   /* Focus states — accessible, on-brand */
   :focus-visible {
     outline: 2px solid #7CFFB2;
@@ -43,48 +54,20 @@
     border-radius: 4px;
   }
 
-  /* Scrollbar — subtle, matches warm grays */
+  /* Scrollbar — slim, matches warm grays */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
     background: #26262D;
-    border-radius: 4px;
+    border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #36363F;
-  }
-}
-
-@layer components {
-  /* The Locdone brand mark — document with folded corner + signal dot */
-  .brand-mark {
-    @apply relative inline-block w-[22px] h-[22px] rounded-[5px] bg-bg-elevated border border-border flex-shrink-0;
-  }
-  .brand-mark::after {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: #7CFFB2;
-    border-radius: 50%;
-    top: 5px;
-    left: 5px;
-    box-shadow: 0 0 8px rgba(124, 255, 178, 0.5);
-  }
-  .brand-mark::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 6px;
-    height: 6px;
-    background: #0E0E10;
-    clip-path: polygon(100% 0, 0 0, 100% 100%);
   }
 }
 

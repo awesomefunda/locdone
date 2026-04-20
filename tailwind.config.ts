@@ -53,25 +53,31 @@ const config: Config = {
         pill: '999px',
       },
       boxShadow: {
-        glow: '0 0 32px rgba(124,255,178,0.15)',
-        'glow-strong': '0 0 48px rgba(124,255,178,0.35)',
+        glow: '0 0 24px rgba(124,255,178,0.12)',
+        'glow-strong': '0 0 40px rgba(124,255,178,0.28)',
+        card: '0 1px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.25)',
       },
       transitionTimingFunction: {
         'out-expo': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       animation: {
-        'fade-up': 'fadeUp 400ms cubic-bezier(0.22, 1, 0.36, 1)',
-        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+        'fade-up': 'fadeUp 380ms cubic-bezier(0.22, 1, 0.36, 1)',
+        'fade-in': 'fadeIn 300ms cubic-bezier(0.22, 1, 0.36, 1)',
+        'pulse-soft': 'pulseSoft 2.4s ease-in-out infinite',
         'shake': 'shake 400ms cubic-bezier(0.22, 1, 0.36, 1)',
       },
       keyframes: {
         fadeUp: {
-          from: { opacity: '0', transform: 'translateY(8px)' },
+          from: { opacity: '0', transform: 'translateY(6px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
         },
         pulseSoft: {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.5' },
+          '50%': { opacity: '0.4' },
         },
         shake: {
           '0%, 100%': { transform: 'translateX(0)' },

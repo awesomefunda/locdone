@@ -39,7 +39,7 @@ export default function Page() {
       faq={[
         {
           q: 'Are my images really not uploaded?',
-          a: 'Really. Open your browser\'s Network tab before dropping a file. You\'ll see zero requests during processing. Locdone has no servers that could receive your images.',
+          a: 'Really. Close your WiFi/internet first, then drop images. Open DevTools (F12) and switch to the Network tab—watch it stay completely empty while Locdone converts them to PDF. That\'s the guarantee.',
         },
         {
           q: 'What image formats work?',

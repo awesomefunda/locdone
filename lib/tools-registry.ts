@@ -4,6 +4,7 @@ import {
   FileMinus2,
   LayoutGrid,
   Square,
+  Scissors,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -21,17 +22,6 @@ export type Tool = {
 };
 
 export const TOOLS: readonly Tool[] = [
-  {
-    slug: 'jpg-to-pdf',
-    name: 'JPG to PDF',
-    short: 'Convert images to PDF',
-    taglineLead: 'JPG to PDF,',
-    taglineAccent: 'on your device',
-    description:
-      'Convert JPG and PNG images to PDF in your browser. Files never leave your device.',
-    Icon: FileImage,
-    keywords: ['jpg to pdf', 'png to pdf', 'image to pdf', 'convert images'],
-  },
   {
     slug: 'merge-pdf',
     name: 'Merge PDFs',
@@ -53,6 +43,28 @@ export const TOOLS: readonly Tool[] = [
       'Shrink PDFs in your browser without uploading them anywhere. Private, fast, free.',
     Icon: FileMinus2,
     keywords: ['compress pdf', 'reduce pdf size', 'shrink pdf'],
+  },
+  {
+    slug: 'split-pdf',
+    name: 'Split PDF',
+    short: 'Extract pages',
+    taglineLead: 'Split PDFs,',
+    taglineAccent: 'extract pages',
+    description:
+      'Extract specific pages from a PDF or split into separate documents. Fast, private, all processing in your browser.',
+    Icon: Scissors,
+    keywords: ['split pdf', 'extract pages', 'pdf splitter', 'page extraction'],
+  },
+  {
+    slug: 'jpg-to-pdf',
+    name: 'JPG to PDF',
+    short: 'Convert images to PDF',
+    taglineLead: 'JPG to PDF,',
+    taglineAccent: 'on your device',
+    description:
+      'Convert JPG and PNG images to PDF in your browser. Files never leave your device.',
+    Icon: FileImage,
+    keywords: ['jpg to pdf', 'png to pdf', 'image to pdf', 'convert images'],
   },
   {
     slug: 'organize-pdf',

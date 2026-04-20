@@ -38,6 +38,10 @@ export default function Page() {
       ]}
       faq={[
         {
+          q: 'Does this really not upload my PDF?',
+          a: 'Correct. To verify: disable your internet connection, drop a PDF, choose compression level, then check DevTools (F12) Network tab — it stays empty. The work happens entirely in your browser.',
+        },
+        {
           q: 'How much smaller will my file be?',
           a: 'For scanned documents, expect 40–70% reduction at Balanced. Text-only PDFs compress less because text is already efficiently stored.',
         },

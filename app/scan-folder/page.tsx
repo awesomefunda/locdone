@@ -1,39 +1,66 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { TOOLS, type Tool } from '@/lib/tools-registry';
-import { PrivacyStrip } from './PrivacyStrip';
+import type { Metadata } from 'next';
+import { ScanFolderClient } from '@/components/tools/ScanFolderClient';
+import { PrivacyStrip } from '@/components/PrivacyStrip';
 
-type ToolPageLayoutProps = {
-  tool: Tool;
-  children: React.ReactNode;
-  howItWorks: { title: string; body: string }[];
-  faq: { q: string; a: string }[];
+export const metadata: Metadata = {
+  title: 'Scan Folder for PDFs',
+  description:
+    'Scan any local folder or repo for PDF files. Find, filter, download, and merge PDFs — all in your browser, nothing uploaded.',
 };
 
-export function ToolPageLayout({
-  tool,
-  children,
-  howItWorks,
-  faq,
-}: ToolPageLayoutProps) {
-  const relatedTools = TOOLS.filter((t) => t.slug !== tool.slug);
+const HOW_IT_WORKS = [
+  {
+    title: 'Pick a folder',
+    body: 'Click the button or drag any folder onto the page. Your browser reads the directory tree locally — no files are uploaded, ever.',
+  },
+  {
+    title: 'Review your PDFs',
+    body: 'Every PDF found is listed with its path and size. Filter by name, select the ones you need, or download any file individually.',
+  },
+  {
+    title: 'Merge or download',
+    body: 'Download files one at a time, or select multiple and merge them into a single PDF — all processed right here, in this tab.',
+  },
+];
 
+const FAQ = [
+  {
+    q: 'Which browsers support folder scanning?',
+    a: 'The folder picker (webkitdirectory) works in Chrome, Firefox, Edge, and Safari. Folder drag-and-drop works in all Chromium-based browsers. If drag-and-drop doesn\'t work for you, use the button instead.',
+  },
+  {
+    q: 'Does this upload my files?',
+    a: "No. Everything happens in your browser tab. To verify: close your WiFi/internet, drop a folder, scan and merge some PDFs. Open DevTools (F12) and check the Network tab — it stays empty the whole time. That's the guarantee.",
+  },
+  {
+    q: 'How large can the folder be?',
+    a: 'There is no hard limit. The browser reads files directly from disk so even large repos scan quickly. Merging many large PDFs may take a few seconds depending on total size.',
+  },
+  {
+    q: 'Can I merge PDFs from different subfolders?',
+    a: 'Yes. All PDFs in the folder are listed regardless of how deep they are. Use the filter to find what you need, select across any subdirectory, and merge in one step.',
+  },
+];
+
+export default function ScanFolderPage() {
   return (
     <div>
       {/* Hero */}
       <section className="mx-auto max-w-2xl px-5 pb-10 pt-14 text-center md:px-6 md:pt-20">
         <h1 className="text-balance font-display text-[clamp(34px,6vw,54px)] italic leading-[1.05] tracking-tight">
-          {tool.taglineLead}{' '}
-          <em className="text-accent">{tool.taglineAccent}</em>
+          Scan a folder{' '}
+          <em className="text-accent">for PDFs</em>
         </h1>
         <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-text-secondary">
-          {tool.description}
+          Point at any folder — a repo, your Downloads, a project directory — and
+          see every PDF inside it. Filter, download, or merge them. Nothing is
+          uploaded.
         </p>
       </section>
 
-      {/* Tool surface — the live interaction area */}
+      {/* Tool surface */}
       <section className="mx-auto max-w-2xl px-5 pb-8 md:px-6">
-        {children}
+        <ScanFolderClient />
         <div className="mt-7">
           <PrivacyStrip />
         </div>
@@ -42,13 +69,13 @@ export function ToolPageLayout({
       {/* How it works */}
       <section className="mx-auto max-w-4xl px-5 py-14 md:px-6">
         <h2 className="mb-2.5 text-center font-display text-[1.75rem] italic">
-          How Locdone does this
+          How it works
         </h2>
         <p className="mb-10 text-center text-sm text-text-tertiary">
-          No servers. No uploads. Just your browser's own abilities.
+          No servers. No uploads. Just your browser reading your disk.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
-          {howItWorks.map((step, i) => (
+          {HOW_IT_WORKS.map((step, i) => (
             <div
               key={i}
               className="rounded-lg border border-border-subtle bg-bg-raised p-6 shadow-card"
@@ -71,7 +98,7 @@ export function ToolPageLayout({
           Questions
         </h2>
         <div className="space-y-2">
-          {faq.map((item, i) => (
+          {FAQ.map((item, i) => (
             <details
               key={i}
               className="group rounded-lg border border-border-subtle bg-bg-raised px-5 py-4 open:border-border open:bg-bg-elevated open:pb-5"
@@ -89,43 +116,6 @@ export function ToolPageLayout({
                 {item.a}
               </p>
             </details>
-          ))}
-        </div>
-      </section>
-
-      {/* Related tools */}
-      <section className="mx-auto max-w-5xl px-5 pb-16 pt-4 md:px-6">
-        <h2 className="mb-2 text-center font-display text-[1.75rem] italic">
-          More tools
-        </h2>
-        <p className="mb-8 text-center text-sm text-text-tertiary">
-          Every one runs on your device. Nothing is uploaded.
-        </p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {relatedTools.map((t) => (
-            <Link
-              key={t.slug}
-              href={`/${t.slug}`}
-              className="group flex items-start gap-3 rounded-lg border border-border-subtle bg-bg-raised p-5 shadow-card transition-all duration-200 hover:-translate-y-px hover:border-accent/60 hover:bg-bg-elevated"
-            >
-              <t.Icon
-                size={18}
-                strokeWidth={1.5}
-                className="mt-0.5 shrink-0 text-accent"
-                aria-hidden
-              />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-medium">{t.name}</span>
-                  <ArrowRight
-                    size={13}
-                    className="text-text-tertiary transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-accent"
-                    aria-hidden
-                  />
-                </div>
-                <div className="mt-0.5 text-xs text-text-tertiary">{t.short}</div>
-              </div>
-            </Link>
           ))}
         </div>
       </section>

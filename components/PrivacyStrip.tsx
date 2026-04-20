@@ -1,6 +1,6 @@
 export function PrivacyStrip() {
   return (
-    <div className="flex flex-wrap justify-center gap-6 font-mono text-xs text-text-secondary">
+    <div className="flex flex-wrap justify-center gap-8 font-mono text-xs text-text-tertiary">
       <span className="flex items-center gap-2">
         <Dot />0 uploads
       </span>
@@ -17,7 +17,7 @@ export function PrivacyStrip() {
 function Dot() {
   return (
     <span
-      className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_6px_rgba(124,255,178,0.6)]"
+      className="inline-block h-1.5 w-1.5 animate-pulse-soft rounded-full bg-accent shadow-[0_0_5px_rgba(124,255,178,0.5)]"
       aria-hidden
     />
   );

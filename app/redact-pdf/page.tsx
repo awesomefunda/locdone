@@ -38,6 +38,10 @@ export default function Page() {
       ]}
       faq={[
         {
+          q: 'Is my PDF secure? Does it upload anywhere?',
+          a: 'Your PDF never leaves your device. Verify by closing your internet connection, then drop a PDF and apply redactions. Open DevTools (F12) Network tab and watch it stay empty during processing.',
+        },
+        {
           q: 'Does "removed" really mean removed?',
           a: 'Yes, within the redacted regions. Locdone rasterizes pages with redactions burned in — the original text isn\'t part of the output file anymore. You can confirm by trying to copy-paste from the redacted PDF.',
         },

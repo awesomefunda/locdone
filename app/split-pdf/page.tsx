@@ -1,39 +1,69 @@
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import { TOOLS, type Tool } from '@/lib/tools-registry';
-import { PrivacyStrip } from './PrivacyStrip';
+import type { Metadata } from 'next';
+import { SplitPdfClient } from '@/components/tools/SplitPdfClient';
+import { PrivacyStrip } from '@/components/PrivacyStrip';
 
-type ToolPageLayoutProps = {
-  tool: Tool;
-  children: React.ReactNode;
-  howItWorks: { title: string; body: string }[];
-  faq: { q: string; a: string }[];
+export const metadata: Metadata = {
+  title: 'Split PDF — Extract Pages',
+  description:
+    'Extract specific pages from a PDF or split into separate documents. Fast, private, in-browser processing. Files never uploaded.',
 };
 
-export function ToolPageLayout({
-  tool,
-  children,
-  howItWorks,
-  faq,
-}: ToolPageLayoutProps) {
-  const relatedTools = TOOLS.filter((t) => t.slug !== tool.slug);
+const HOW_IT_WORKS = [
+  {
+    title: 'Upload your PDF',
+    body: 'Drop a PDF or click to browse. Your browser reads it locally — nothing is uploaded, ever.',
+  },
+  {
+    title: 'Select pages',
+    body: 'Click individual pages or use a range (e.g. "1-5, 7, 9"). Preview your selection before extracting.',
+  },
+  {
+    title: 'Download',
+    body: 'Extract your selected pages into a new PDF. Processed right here in your browser, fast and private.',
+  },
+];
 
+const FAQ = [
+  {
+    q: 'Does splitting upload my PDF?',
+    a: 'No. Everything happens in your browser. To verify: close your WiFi/internet, drop a PDF, and watch the Network tab in DevTools (F12) stay empty while processing.',
+  },
+  {
+    q: 'Can I edit the page range after selecting?',
+    a: 'Yes. Use the range input to type a new selection like "1-5, 7, 10-12". Or click the "Show list" button to manually toggle pages.',
+  },
+  {
+    q: 'What file size limit is there?',
+    a: "There's no hard limit, but very large PDFs (100+ MB) may take longer. Your browser's memory is the limit.",
+  },
+  {
+    q: 'Can I remove pages instead of extracting?',
+    a: 'Not directly in this tool. Instead, select all pages *except* the ones you want to remove, then extract.',
+  },
+  {
+    q: 'What formats does this support?',
+    a: 'Only standard PDFs. Encrypted or heavily corrupted files may fail to load.',
+  },
+];
+
+export default function SplitPdfPage() {
   return (
     <div>
       {/* Hero */}
       <section className="mx-auto max-w-2xl px-5 pb-10 pt-14 text-center md:px-6 md:pt-20">
         <h1 className="text-balance font-display text-[clamp(34px,6vw,54px)] italic leading-[1.05] tracking-tight">
-          {tool.taglineLead}{' '}
-          <em className="text-accent">{tool.taglineAccent}</em>
+          Split PDFs,{' '}
+          <em className="text-accent">extract pages</em>
         </h1>
         <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-text-secondary">
-          {tool.description}
+          Extract specific pages from your PDF. Use a range or click individually.
+          All processing happens on your device.
         </p>
       </section>
 
-      {/* Tool surface — the live interaction area */}
+      {/* Tool surface */}
       <section className="mx-auto max-w-2xl px-5 pb-8 md:px-6">
-        {children}
+        <SplitPdfClient />
         <div className="mt-7">
           <PrivacyStrip />
         </div>
@@ -42,13 +72,13 @@ export function ToolPageLayout({
       {/* How it works */}
       <section className="mx-auto max-w-4xl px-5 py-14 md:px-6">
         <h2 className="mb-2.5 text-center font-display text-[1.75rem] italic">
-          How Locdone does this
+          How it works
         </h2>
         <p className="mb-10 text-center text-sm text-text-tertiary">
-          No servers. No uploads. Just your browser's own abilities.
+          No servers. No uploads. Just your browser processing your PDF.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
-          {howItWorks.map((step, i) => (
+          {HOW_IT_WORKS.map((step, i) => (
             <div
               key={i}
               className="rounded-lg border border-border-subtle bg-bg-raised p-6 shadow-card"
@@ -71,7 +101,7 @@ export function ToolPageLayout({
           Questions
         </h2>
         <div className="space-y-2">
-          {faq.map((item, i) => (
+          {FAQ.map((item, i) => (
             <details
               key={i}
               className="group rounded-lg border border-border-subtle bg-bg-raised px-5 py-4 open:border-border open:bg-bg-elevated open:pb-5"
@@ -89,43 +119,6 @@ export function ToolPageLayout({
                 {item.a}
               </p>
             </details>
-          ))}
-        </div>
-      </section>
-
-      {/* Related tools */}
-      <section className="mx-auto max-w-5xl px-5 pb-16 pt-4 md:px-6">
-        <h2 className="mb-2 text-center font-display text-[1.75rem] italic">
-          More tools
-        </h2>
-        <p className="mb-8 text-center text-sm text-text-tertiary">
-          Every one runs on your device. Nothing is uploaded.
-        </p>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {relatedTools.map((t) => (
-            <Link
-              key={t.slug}
-              href={`/${t.slug}`}
-              className="group flex items-start gap-3 rounded-lg border border-border-subtle bg-bg-raised p-5 shadow-card transition-all duration-200 hover:-translate-y-px hover:border-accent/60 hover:bg-bg-elevated"
-            >
-              <t.Icon
-                size={18}
-                strokeWidth={1.5}
-                className="mt-0.5 shrink-0 text-accent"
-                aria-hidden
-              />
-              <div className="min-w-0 flex-1">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-sm font-medium">{t.name}</span>
-                  <ArrowRight
-                    size={13}
-                    className="text-text-tertiary transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-accent"
-                    aria-hidden
-                  />
-                </div>
-                <div className="mt-0.5 text-xs text-text-tertiary">{t.short}</div>
-              </div>
-            </Link>
           ))}
         </div>
       </section>

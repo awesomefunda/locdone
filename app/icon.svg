@@ -1,7 +1,23 @@
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="1" y="1" width="30" height="30" rx="7" fill="#0E0E10"/>
-  <rect x="1" y="1" width="30" height="30" rx="7" stroke="#36363F" stroke-width="1"/>
-  <path d="M8 10 L8 22 L24 22 L24 14 L20 10 Z" fill="#1E1E23" stroke="#36363F" stroke-width="1" stroke-linejoin="round"/>
-  <path d="M20 10 L20 14 L24 14 Z" fill="#0E0E10" stroke="#36363F" stroke-width="1" stroke-linejoin="round"/>
-  <circle cx="12" cy="17" r="2" fill="#7CFFB2"/>
+  <!-- Background -->
+  <rect width="32" height="32" rx="7.5" fill="#0E0E10"/>
+
+  <!-- Document body -->
+  <path d="M5 3.5 L17.5 3.5 L22.5 8.5 L22.5 27.5 L5 27.5 Z" fill="#1C1C21"/>
+  <!-- Fold crease -->
+  <path d="M17.5 3.5 L17.5 8.5 L22.5 8.5" stroke="#2E2E3A" stroke-width="0.8"/>
+  <!-- Document outline -->
+  <path d="M5 3.5 L17.5 3.5 L22.5 8.5 L22.5 27.5 L5 27.5 Z" stroke="#363643" stroke-width="0.75"/>
+
+  <!-- Content lines -->
+  <rect x="7.5" y="13"   width="12.5" height="1.75" rx="0.875" fill="#4A4A58"/>
+  <rect x="7.5" y="16.5" width="12.5" height="1.75" rx="0.875" fill="#4A4A58"/>
+  <rect x="7.5" y="20"   width="7.5"  height="1.75" rx="0.875" fill="#4A4A58"/>
+
+  <!-- Green badge -->
+  <circle cx="25" cy="25" r="8"   fill="#0E0E10"/>
+  <circle cx="25" cy="25" r="6.2" fill="#7CFFB2"/>
+
+  <!-- Checkmark -->
+  <path d="M22.4 25 L24.2 26.9 L27.6 23.1" stroke="#0C0C0E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

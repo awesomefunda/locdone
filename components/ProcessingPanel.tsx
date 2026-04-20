@@ -23,28 +23,28 @@ export function ProcessingPanel({
 
   return (
     <div
-      className="animate-fade-up rounded-lg border border-border bg-bg-raised p-7"
+      className="animate-fade-up rounded-lg border border-border bg-bg-raised p-6"
       role="status"
       aria-live="polite"
       aria-atomic="true"
     >
-      <div className="mb-5 flex items-center gap-3 text-[15px]">
+      <div className="mb-5 flex items-center gap-2.5 text-sm text-text-primary">
         <span
-          className="inline-block h-3.5 w-3.5 animate-spin rounded-full border-2 border-border border-t-accent"
+          className="inline-block h-3 w-3 animate-spin rounded-full border-[1.5px] border-border border-t-accent"
           aria-hidden
         />
         <span>Processing on this device</span>
       </div>
 
       <div
-        className="mb-3 h-1.5 overflow-hidden rounded-pill bg-bg-elevated"
+        className="mb-2.5 h-1 overflow-hidden rounded-pill bg-bg-elevated"
         role="progressbar"
         aria-valuenow={pct}
         aria-valuemin={0}
         aria-valuemax={100}
       >
         <div
-          className="h-full rounded-pill bg-gradient-to-r from-accent-dim to-accent shadow-glow-strong transition-[width] duration-200 ease-out-expo"
+          className="h-full rounded-pill bg-gradient-to-r from-accent-dim to-accent transition-[width] duration-300 ease-out-expo"
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -54,19 +54,19 @@ export function ProcessingPanel({
           {stageLabel}
           {detail && <span className="ml-2 text-text-tertiary">· {detail}</span>}
         </span>
-        <span className="font-medium text-accent">{pct}%</span>
+        <span className="font-medium tabular-nums text-accent">{pct}%</span>
       </div>
 
       {files && files.length > 0 && (
-        <ul className="mb-5 space-y-0">
+        <ul className="mb-5">
           {files.map((f, i) => (
             <li
               key={i}
               className="flex items-center gap-2.5 border-b border-border-subtle py-2 text-sm text-text-secondary last:border-b-0"
             >
               <span
-                className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full ${
-                  f.done ? 'bg-accent' : 'bg-text-tertiary'
+                className={`inline-block h-1.5 w-1.5 shrink-0 rounded-full transition-colors duration-300 ${
+                  f.done ? 'bg-accent shadow-[0_0_6px_rgba(124,255,178,0.5)]' : 'bg-border'
                 }`}
                 aria-hidden
               />
