@@ -56,7 +56,7 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/locdone"
+                  href="https://github.com/awesomefunda/locdone"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-text-secondary transition-colors hover:text-accent"
@@ -70,8 +70,20 @@ export function Footer() {
 
         <div className="mt-8 flex flex-col items-start justify-between gap-3 border-t border-border-subtle pt-6 text-xs text-text-tertiary md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Locdone. MIT licensed core.</div>
-          <div className="font-mono">
-            No cookies · No tracking · No uploads
+          <div className="font-mono flex flex-wrap gap-x-4 gap-y-1">
+            <span>No cookies · No tracking · No uploads</span>
+            <span>
+              Analytics:{' '}
+              <a
+                href="https://plausible.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 transition-colors hover:text-accent"
+              >
+                Plausible
+              </a>
+              {' '}(no cookies, no PII)
+            </span>
           </div>
         </div>
       </div>

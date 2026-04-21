@@ -1,12 +1,14 @@
 # Locdone
 
-**Locally processed. Instantly done.**
+**Locally processed. Instantly done. Free and open source (MIT).**
 
 PDF tools that run entirely in your browser — at [locdone.com](https://locdone.com).
 
-Convert JPG/PNG to PDF, merge, compress, organize, and redact PDFs without uploading them anywhere. Every byte of processing happens on the user's device via pdf-lib, pdf.js, and the browser's own File API. No servers, no accounts, no tracking.
+> Every function that touches your file is in this repo. Read it.
+> Grep `/lib/tools` for `fetch(`. You'll find zero matches.
+> That is the product.
 
-This repo is Locdone's processing core — the functions that touch user files. Every one of them is in here, under MIT. Open `/lib/tools` and grep for `fetch(`. You'll find zero matches. That's the product.
+Convert JPG/PNG to PDF, merge, compress, organize, and redact PDFs without uploading them anywhere. Every byte of processing happens on the user's device via pdf-lib, pdf.js, and the browser's own File API. No servers, no accounts, no tracking.
 
 ## Why "Locdone"?
 

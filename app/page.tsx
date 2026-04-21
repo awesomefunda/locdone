@@ -9,29 +9,17 @@ export default function HomePage() {
       <section className="mx-auto max-w-3xl px-5 pt-14 text-center md:px-6 md:pt-20">
         <div className="mb-7 inline-flex items-center gap-2 rounded-pill border border-border-subtle bg-bg-raised px-3.5 py-1.5 font-mono text-[11px] text-text-secondary">
           <span className="inline-block h-1.5 w-1.5 animate-pulse-soft rounded-full bg-accent shadow-[0_0_6px_rgba(124,255,178,0.6)]" />
-          100% free · 0 uploads · 0 accounts
+          free · open source · 0 uploads · 0 tracking
         </div>
 
         <h1 className="text-balance font-display text-[clamp(36px,6.5vw,60px)] italic leading-[1.05] tracking-tight">
-          Free PDF tools.
-          <br />
           <em className="text-accent">Your files never leave this device.</em>
         </h1>
         <p className="mx-auto mt-5 max-w-lg text-balance text-base leading-relaxed text-text-secondary">
-          Convert, merge, compress, organize, and redact PDFs right in your
-          browser. No uploads, no signup, no watermarks — just fast, private
-          processing that runs entirely on your computer.
+          Free PDF tools — convert, merge, compress, organize, and redact right
+          in your browser. No uploads, no signup, no watermarks.
         </p>
 
-        <div className="mt-8 flex items-center justify-center gap-3 font-mono text-[11px] text-text-tertiary">
-          <a href="#tools" className="inline-flex items-center gap-1 transition-colors hover:text-accent">
-            Pick a tool <ArrowRight size={12} />
-          </a>
-          <span aria-hidden>·</span>
-          <Link href="/privacy" className="transition-colors hover:text-accent">
-            How it works
-          </Link>
-        </div>
       </section>
 
       {/* Tool grid — the primary door into the product */}
@@ -72,8 +60,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Brand story — name meaning, architecture in one breath */}
+      <section className="mx-auto max-w-5xl px-5 pt-8 md:px-6">
+        <p className="text-center text-sm text-text-tertiary">
+          Why &ldquo;Locdone&rdquo;?{' '}
+          <strong className="text-text-secondary font-medium">
+            <span className="text-accent">Loc</span>al processing.{' '}
+            <span className="text-accent">Done</span> instantly.
+          </strong>{' '}
+          The name is the architecture.
+        </p>
+      </section>
+
       {/* Compact "why" row — three benefits, one strip */}
-      <section className="mx-auto max-w-5xl px-5 pt-10 md:px-6">
+      <section className="mx-auto max-w-5xl px-5 pt-6 md:px-6">
         <div className="grid rounded-lg border border-border-subtle bg-bg-raised sm:grid-cols-3 sm:divide-x sm:divide-border-subtle">
           <Feature
             Icon={ShieldCheck}

@@ -169,6 +169,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script
+          defer
+          data-domain="locdone.com"
+          src="https://plausible.io/js/script.js"
+        />
       </head>
       <body className="font-sans">
         <div className="relative z-10 flex min-h-screen flex-col">
