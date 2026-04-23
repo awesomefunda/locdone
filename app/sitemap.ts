@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { TOOLS } from '@/lib/tools-registry';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://locdone.com';
+  const base = 'https://www.locdone.com';
   const lastModified = new Date();
 
   const staticPages = [
