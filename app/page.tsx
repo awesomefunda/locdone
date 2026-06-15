@@ -36,16 +36,16 @@ const FAQ = [
     a: 'Those tools upload your file to their servers, process it there, then send it back. That model works, but it means your file touched a third-party computer. Locdone uses your browser as the processing engine -- the file never leaves your tab.',
   },
   {
+    q: 'Is it safe to use before uploading documents to AI tools like ChatGPT?',
+    a: "Yes -- that's one of the most common reasons people use Locdone. Redact the sensitive parts (SSN, account numbers, names, diagnoses) locally first, then share the cleaned version with an AI. Since nothing is uploaded to Locdone's servers, your original document stays private throughout.",
+  },
+  {
     q: 'Are my PDFs uploaded to a server?',
     a: "No. All processing happens locally in your browser using open-source libraries (pdf-lib and pdf.js). You can verify this yourself -- open your browser's Network tab and you'll see zero requests while a file is being processed.",
   },
   {
     q: 'Do I need to create an account?',
     a: "No account, no email, no sign-up. Open the site, drop a file, download the result.",
-  },
-  {
-    q: 'What file types are supported?',
-    a: "PDF files for merge, compress, organize, and redact; JPG and PNG images for conversion to PDF. Most browsers handle files up to around 100 MB smoothly.",
   },
   {
     q: 'Does it work on mobile?',
@@ -78,22 +78,61 @@ export default function HomePage() {
       <section className="mx-auto max-w-3xl px-5 pt-14 text-center md:px-6 md:pt-20">
         <div className="mb-7 inline-flex items-center gap-2 rounded-pill border border-border-subtle bg-bg-raised px-3.5 py-1.5 font-mono text-[11px] text-text-secondary">
           <span className="inline-block h-1.5 w-1.5 animate-pulse-soft rounded-full bg-accent shadow-[0_0_6px_rgba(124,255,178,0.6)]" />
-          free · open source · verifiable · 0 uploads
+          free · local PDF tools · 0 uploads · 0 tracking
         </div>
-        <h1 className="text-balance font-display text-[clamp(36px,6.5vw,60px)] italic leading-[1.05] tracking-tight">
-          <em className="text-accent">Your files never leave this device.</em>
+        <h1 className="text-balance font-display text-[clamp(32px,5.5vw,54px)] italic leading-[1.08] tracking-tight">
+          <em className="text-accent">Locdone</em> is a free PDF toolkit
+          that runs in your browser, not ours.
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-text-secondary">
-          PDF tools built for anyone who&rsquo;d rather not hand their files to a stranger&rsquo;s
-          server &mdash; and for professionals who legally can&rsquo;t.
+          Merge, compress, redact, split, Bates-number &mdash; all processed
+          locally on your device. No uploads. No account. No one else sees
+          your files.
         </p>
         <p className="mt-3 font-mono text-xs text-text-tertiary">
-          Private by architecture, not by policy.
+          <span className="text-accent">Loc</span>al processing.{' '}
+          <span className="text-accent">Done</span> instantly. That&rsquo;s
+          the name. That&rsquo;s the architecture.
         </p>
       </section>
 
-      {/* ── Persona strip ────────────────────────────────────────── */}
+      {/* ── AI use case callout ──────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-5 pt-10 md:px-6">
+        <div className="relative overflow-hidden rounded-xl border border-border-subtle bg-bg-raised p-6 md:p-8">
+          <div className="mb-1 font-mono text-[11px] text-accent uppercase tracking-widest">
+            New use case
+          </div>
+          <h2 className="font-display text-xl italic leading-snug md:text-2xl">
+            Sharing documents with AI? Redact first.
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-secondary md:text-base">
+            Millions of people now upload medical records, financial statements,
+            and legal documents to ChatGPT, Claude, and other AI tools for
+            analysis. Before you do &mdash; redact what doesn&rsquo;t need to be
+            there. SSNs, account numbers, diagnoses, names. Gone from the file
+            before it leaves your hands. Locally. Free.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link
+              href="/redact-pdf"
+              className="inline-flex items-center gap-1.5 rounded-pill bg-accent px-5 py-2.5 text-sm font-medium text-bg-base transition-all hover:-translate-y-px hover:bg-accent-dim hover:shadow-glow-strong"
+            >
+              Redact PDF before sharing
+              <ArrowRight size={14} />
+            </Link>
+            <Link
+              href="/strip-pdf-metadata"
+              className="inline-flex items-center gap-1.5 rounded-pill border border-border bg-bg-elevated px-5 py-2.5 text-sm text-text-secondary transition-colors hover:border-accent/40 hover:text-text-primary"
+            >
+              Strip hidden metadata
+              <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Persona strip ────────────────────────────────────────── */}
+      <section className="mx-auto max-w-5xl px-5 pt-6 md:px-6">
         <div className="grid gap-px rounded-xl border border-border-subtle bg-border-subtle overflow-hidden sm:grid-cols-3">
           {PERSONAS.map((p) => (
             <div key={p.label} className="bg-bg-raised p-5">
@@ -139,7 +178,6 @@ export default function HomePage() {
           <div className="h-px flex-1 bg-accent/20" />
         </div>
         <div className="rounded-xl border border-accent/25 bg-bg-raised overflow-hidden">
-          {/* Header */}
           <div className="flex flex-col gap-1 border-b border-border-subtle bg-bg-elevated px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="font-display text-xl italic leading-snug">
@@ -158,7 +196,6 @@ export default function HomePage() {
               <ArrowRight size={12} />
             </Link>
           </div>
-          {/* Compliance tool cards */}
           <div className="grid gap-px bg-border-subtle sm:grid-cols-3">
             {complianceTools.map((tool) => (
               <Link
@@ -182,20 +219,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Brand name story ─────────────────────────────────────── */}
-      <section className="mx-auto max-w-5xl px-5 pt-8 md:px-6">
-        <p className="text-center text-sm text-text-tertiary">
-          Why &ldquo;Locdone&rdquo;?{' '}
-          <strong className="font-medium text-text-secondary">
-            <span className="text-accent">Loc</span>al processing.{' '}
-            <span className="text-accent">Done</span> instantly.
-          </strong>{' '}
-          The name is the architecture.
-        </p>
-      </section>
-
       {/* ── Why Locdone strip ────────────────────────────────────── */}
-      <section className="mx-auto max-w-5xl px-5 pt-6 md:px-6">
+      <section className="mx-auto max-w-5xl px-5 pt-10 md:px-6">
         <div className="grid rounded-lg border border-border-subtle bg-bg-raised sm:grid-cols-3 sm:divide-x sm:divide-border-subtle">
           <Feature
             Icon={ShieldCheck}

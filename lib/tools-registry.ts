@@ -89,6 +89,13 @@ export const TOOLS: readonly Tool[] = [
       'legal redaction',
       'court filing redaction',
       'remove text from pdf permanently',
+      'redact pdf before uploading to ai',
+      'redact pdf before chatgpt',
+      'remove personal info from pdf before ai',
+      'redact medical records before ai',
+      'redact financial documents ai',
+      'remove ssn from pdf',
+      'privacy ai document upload',
     ],
   },
   {
