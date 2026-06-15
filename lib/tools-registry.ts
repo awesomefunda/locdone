@@ -25,7 +25,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'merge-pdf',
     name: 'Merge PDFs',
-    short: 'Combine multiple PDFs',
+    short: 'Combine PDFs — nothing uploaded, no watermark',
     taglineLead: 'Merge PDFs',
     taglineAccent: 'without uploading anything',
     description: 'Combine PDFs in your browser. Fast, free, and your files never leave this device.',
@@ -35,7 +35,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'compress-pdf',
     name: 'Compress PDF',
-    short: 'Shrink file size',
+    short: 'Smaller file — stays on your device',
     taglineLead: 'Compress PDFs',
     taglineAccent: 'without uploading them',
     description: 'Shrink PDFs in your browser without uploading them anywhere. Private, fast, free.',
@@ -45,7 +45,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'split-pdf',
     name: 'Split PDF',
-    short: 'Extract pages',
+    short: 'Pull specific pages — files never leave your browser',
     taglineLead: 'Split PDFs,',
     taglineAccent: 'extract pages',
     description: 'Extract specific pages from a PDF or split into separate documents. Fast, private, all processing in your browser.',
@@ -55,7 +55,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'jpg-to-pdf',
     name: 'JPG to PDF',
-    short: 'Convert images to PDF',
+    short: 'Turn photos and scans into a PDF, offline',
     taglineLead: 'JPG to PDF,',
     taglineAccent: 'on your device',
     description: 'Convert JPG and PNG images to PDF in your browser. Files never leave your device.',
@@ -65,7 +65,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'organize-pdf',
     name: 'Organize PDF',
-    short: 'Reorder, delete, rotate',
+    short: 'Reorder, rotate, delete pages — no cloud required',
     taglineLead: 'Organize PDF pages',
     taglineAccent: 'visually',
     description: 'Drag to reorder, click to delete, rotate pages - all in your browser.',
@@ -75,7 +75,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'redact-pdf',
     name: 'Redact PDF',
-    short: 'Permanently remove sensitive text',
+    short: 'True redaction — text is gone, not just covered',
     taglineLead: 'Redact PDFs,',
     taglineAccent: 'on your device',
     description: 'True redaction: text is burned out of the page, not just covered. Nothing uploaded, nothing tracked.',
@@ -94,7 +94,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'strip-pdf-metadata',
     name: 'Strip PDF Metadata',
-    short: 'Remove hidden author and software info',
+    short: 'Erase who made it, when, and with what — before you share',
     taglineLead: 'Remove PDF metadata',
     taglineAccent: 'before you share',
     description: 'See and erase hidden metadata from any PDF: author name, software used, creation date, and XMP data. All in your browser.',
@@ -112,7 +112,7 @@ export const TOOLS: readonly Tool[] = [
   {
     slug: 'bates-number-pdf',
     name: 'Bates Number PDF',
-    short: 'Stamp sequential Bates labels',
+    short: 'Court-ready sequential page stamps — free, no account',
     taglineLead: 'Bates-number a PDF',
     taglineAccent: 'free, no upload',
     description: 'Add sequential Bates stamps to every page. Set your prefix, starting number, and position. Runs in your browser.',

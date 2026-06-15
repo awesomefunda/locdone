@@ -2,14 +2,42 @@ import Link from 'next/link';
 import { ArrowRight, Zap, ShieldCheck, Infinity as InfinityIcon } from 'lucide-react';
 import { TOOLS } from '@/lib/tools-registry';
 
+const COMPLIANCE_SLUGS = new Set(['redact-pdf', 'strip-pdf-metadata', 'bates-number-pdf']);
+
+const PERSONAS = [
+  {
+    label: 'Attorneys',
+    detail:
+      'Client files are privileged. Uploading them to iLovePDF, Smallpdf, or any cloud PDF tool is a professional ethics risk. Locdone processes entirely in your browser -- nothing ever leaves your machine.',
+  },
+  {
+    label: 'Healthcare workers',
+    detail:
+      "PHI belongs in your hands. Most online PDF tools store files on their servers, which means a BAA, a data processing agreement, or a breach notice waiting to happen. Locdone doesn't touch your files.",
+  },
+  {
+    label: 'Anyone who reads the fine print',
+    detail:
+      "Most free PDF tools monetize by processing your files on their servers. Locdone runs on open-source libraries in your browser tab. You can verify it -- open DevTools, watch the Network tab stay empty.",
+  },
+];
+
 const FAQ = [
   {
+    q: 'Why should I trust that nothing is uploaded?',
+    a: "You shouldn't have to take our word for it. Press F12, open the Network tab, then drop a file and process it. You'll see zero outbound requests while your PDF is being handled. The processing code is open source and runs entirely in your browser using pdf-lib and pdf.js.",
+  },
+  {
     q: 'Is Locdone really free?',
-    a: "Yes — every tool is free, with no daily limits, no watermarks, and no signup. Locdone runs in your browser, so there are no servers to pay for.",
+    a: "Yes -- every tool is free, with no daily limits, no watermarks, and no signup. Locdone runs in your browser, so there are no servers to pay for.",
+  },
+  {
+    q: 'How is Locdone different from iLovePDF or Smallpdf?',
+    a: 'Those tools upload your file to their servers, process it there, then send it back. That model works, but it means your file touched a third-party computer. Locdone uses your browser as the processing engine -- the file never leaves your tab.',
   },
   {
     q: 'Are my PDFs uploaded to a server?',
-    a: "No. All processing happens locally in your browser using open-source libraries (pdf-lib and pdf.js). You can verify this yourself — open your browser's Network tab and you'll see zero requests while a file is being processed.",
+    a: "No. All processing happens locally in your browser using open-source libraries (pdf-lib and pdf.js). You can verify this yourself -- open your browser's Network tab and you'll see zero requests while a file is being processed.",
   },
   {
     q: 'Do I need to create an account?',
@@ -20,12 +48,8 @@ const FAQ = [
     a: "PDF files for merge, compress, organize, and redact; JPG and PNG images for conversion to PDF. Most browsers handle files up to around 100 MB smoothly.",
   },
   {
-    q: 'How is Locdone different from other online PDF tools?',
-    a: "Most \"online PDF\" tools upload your file to a server, process it there, then send it back. Locdone never uploads anything — your file stays in your browser tab from start to finish. That means it's private by design, works offline once loaded, and stays fast even for sensitive documents.",
-  },
-  {
     q: 'Does it work on mobile?',
-    a: "Yes. Locdone works in any modern browser on desktop, iOS, and Android. It's also installable as a PWA.",
+    a: "Yes. Locdone works in any modern browser on desktop, iOS, and Android.",
   },
 ];
 
@@ -40,72 +64,129 @@ const faqJsonLd = {
 };
 
 export default function HomePage() {
+  const generalTools = TOOLS.filter((t) => !COMPLIANCE_SLUGS.has(t.slug));
+  const complianceTools = TOOLS.filter((t) => COMPLIANCE_SLUGS.has(t.slug));
+
   return (
     <div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      {/* Hero — compact, one screenful */}
+
+      {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-5 pt-14 text-center md:px-6 md:pt-20">
         <div className="mb-7 inline-flex items-center gap-2 rounded-pill border border-border-subtle bg-bg-raised px-3.5 py-1.5 font-mono text-[11px] text-text-secondary">
           <span className="inline-block h-1.5 w-1.5 animate-pulse-soft rounded-full bg-accent shadow-[0_0_6px_rgba(124,255,178,0.6)]" />
-          free · open source · 0 uploads · 0 tracking
+          free · open source · verifiable · 0 uploads
         </div>
-
         <h1 className="text-balance font-display text-[clamp(36px,6.5vw,60px)] italic leading-[1.05] tracking-tight">
           <em className="text-accent">Your files never leave this device.</em>
         </h1>
-        <p className="mx-auto mt-5 max-w-lg text-balance text-base leading-relaxed text-text-secondary">
-          Free PDF tools — convert, merge, compress, organize, and redact right
-          in your browser. No uploads, no signup, no watermarks.
+        <p className="mx-auto mt-5 max-w-xl text-balance text-base leading-relaxed text-text-secondary">
+          PDF tools built for anyone who&rsquo;d rather not hand their files to a stranger&rsquo;s
+          server &mdash; and for professionals who legally can&rsquo;t.
         </p>
-
+        <p className="mt-3 font-mono text-xs text-text-tertiary">
+          Private by architecture, not by policy.
+        </p>
       </section>
 
-      {/* Tool grid — the primary door into the product */}
-      <section id="tools" className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-14 md:px-6">
+      {/* ── Persona strip ────────────────────────────────────────── */}
+      <section className="mx-auto max-w-5xl px-5 pt-10 md:px-6">
+        <div className="grid gap-px rounded-xl border border-border-subtle bg-border-subtle overflow-hidden sm:grid-cols-3">
+          {PERSONAS.map((p) => (
+            <div key={p.label} className="bg-bg-raised p-5">
+              <div className="mb-2 font-mono text-xs text-accent">{p.label}</div>
+              <p className="text-xs leading-relaxed text-text-secondary">{p.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── General tools grid ───────────────────────────────────── */}
+      <section id="tools" className="mx-auto max-w-5xl scroll-mt-20 px-5 pt-10 md:px-6">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="font-mono text-[11px] text-text-tertiary uppercase tracking-widest">General tools</span>
+          <div className="h-px flex-1 bg-border-subtle" />
+        </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {TOOLS.map((tool) => (
+          {generalTools.map((tool) => (
             <Link
               key={tool.slug}
               href={`/${tool.slug}`}
               className="group relative flex items-start gap-4 overflow-hidden rounded-lg border border-border-subtle bg-bg-raised p-5 shadow-card transition-all duration-200 hover:-translate-y-px hover:border-accent/60 hover:bg-bg-elevated"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-bg-elevated ring-1 ring-border-subtle transition-all group-hover:ring-accent/30">
-                <tool.Icon
-                  size={18}
-                  strokeWidth={1.5}
-                  className="text-accent"
-                  aria-hidden
-                />
+                <tool.Icon size={18} strokeWidth={1.5} className="text-accent" aria-hidden />
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-display text-lg italic leading-tight">
-                    {tool.name}
-                  </h3>
-                  <ArrowRight
-                    size={14}
-                    className="shrink-0 text-text-tertiary transition-all duration-200 group-hover:translate-x-1 group-hover:text-accent"
-                    aria-hidden
-                  />
+                  <h3 className="font-display text-lg italic leading-tight">{tool.name}</h3>
+                  <ArrowRight size={14} className="shrink-0 text-text-tertiary transition-all duration-200 group-hover:translate-x-1 group-hover:text-accent" aria-hidden />
                 </div>
-                <p className="mt-1 text-sm leading-snug text-text-secondary">
-                  {tool.short}
-                </p>
+                <p className="mt-1 text-sm leading-snug text-text-secondary">{tool.short}</p>
               </div>
             </Link>
           ))}
-
         </div>
       </section>
 
-      {/* Brand story — name meaning, architecture in one breath */}
+      {/* ── Compliance spotlight ─────────────────────────────────── */}
+      <section className="mx-auto max-w-5xl px-5 pt-10 md:px-6">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="font-mono text-[11px] text-accent uppercase tracking-widest">Compliance tools</span>
+          <div className="h-px flex-1 bg-accent/20" />
+        </div>
+        <div className="rounded-xl border border-accent/25 bg-bg-raised overflow-hidden">
+          {/* Header */}
+          <div className="flex flex-col gap-1 border-b border-border-subtle bg-bg-elevated px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="font-display text-xl italic leading-snug">
+                Built for professionals who legally can&rsquo;t click &ldquo;upload.&rdquo;
+              </h2>
+              <p className="mt-1.5 text-sm text-text-secondary">
+                HIPAA, attorney-client privilege, court protective orders &mdash; some documents
+                cannot touch a third-party server. These tools don&rsquo;t.
+              </p>
+            </div>
+            <Link
+              href="/compliance"
+              className="mt-3 inline-flex shrink-0 items-center gap-1.5 rounded-pill border border-accent/40 px-4 py-2 font-mono text-xs text-accent transition-colors hover:bg-accent/10 sm:mt-0"
+            >
+              Why it matters
+              <ArrowRight size={12} />
+            </Link>
+          </div>
+          {/* Compliance tool cards */}
+          <div className="grid gap-px bg-border-subtle sm:grid-cols-3">
+            {complianceTools.map((tool) => (
+              <Link
+                key={tool.slug}
+                href={`/${tool.slug}`}
+                className="group flex flex-col gap-2 bg-bg-raised p-5 transition-colors hover:bg-bg-elevated"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-md bg-bg-elevated ring-1 ring-border-subtle transition-all group-hover:ring-accent/30">
+                    <tool.Icon size={16} strokeWidth={1.5} className="text-accent" aria-hidden />
+                  </div>
+                  <ArrowRight size={13} className="text-text-tertiary transition-all group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden />
+                </div>
+                <div>
+                  <div className="font-display text-base italic leading-tight">{tool.name}</div>
+                  <p className="mt-0.5 text-xs leading-snug text-text-secondary">{tool.short}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Brand name story ─────────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-5 pt-8 md:px-6">
         <p className="text-center text-sm text-text-tertiary">
           Why &ldquo;Locdone&rdquo;?{' '}
-          <strong className="text-text-secondary font-medium">
+          <strong className="font-medium text-text-secondary">
             <span className="text-accent">Loc</span>al processing.{' '}
             <span className="text-accent">Done</span> instantly.
           </strong>{' '}
@@ -113,41 +194,38 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Compact "why" row — three benefits, one strip */}
+      {/* ── Why Locdone strip ────────────────────────────────────── */}
       <section className="mx-auto max-w-5xl px-5 pt-6 md:px-6">
         <div className="grid rounded-lg border border-border-subtle bg-bg-raised sm:grid-cols-3 sm:divide-x sm:divide-border-subtle">
           <Feature
             Icon={ShieldCheck}
-            title="Truly private"
-            body="Close your WiFi. Drop a file. Watch DevTools (F12) Network tab stay empty while processing — that's the guarantee."
+            title="Private by architecture"
+            body="The processing code runs inside your browser tab -- not on a server you're trusting blindly. Close your WiFi and it still works."
           />
           <Feature
             Icon={Zap}
-            title="Instant"
-            body="No upload queue, no waiting room. Drop a file, get a file."
+            title="No queue. No wait."
+            body="No upload progress bar. No 'your file is being processed' spinner. Drop a file, get a file."
           />
           <Feature
             Icon={InfinityIcon}
-            title="Free, no catch"
-            body="No watermarks, no signup, no daily limits. Every tool, every feature."
+            title="Free forever, no catch"
+            body="No watermarks, no daily limits, no signup. There's no server to pay for, so there's nothing to charge you for."
           />
         </div>
       </section>
 
-      {/* Verify — compact, single block */}
+      {/* ── Verification block ───────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-5 pt-10 md:px-6">
         <div className="rounded-lg border border-border-subtle bg-bg-raised p-6 md:p-8">
           <h2 className="mb-2.5 font-display text-2xl italic md:text-[1.75rem]">
-            Don't take our word for it.
+            Don&rsquo;t take our word for it.
           </h2>
           <p className="text-sm leading-relaxed text-text-secondary md:text-base">
             Press{' '}
-            <kbd className="rounded border border-border bg-bg-elevated px-1.5 py-0.5 font-mono text-[11px]">
-              F12
-            </kbd>{' '}
-            to open devtools, switch to the Network tab, then drop any file into
-            any Locdone tool. Watch it stay empty while your PDF is processed —
-            that's the whole trust model.
+            <kbd className="rounded border border-border bg-bg-elevated px-1.5 py-0.5 font-mono text-[11px]">F12</kbd>{' '}
+            to open DevTools, switch to the Network tab, then drop any file into any Locdone tool.
+            Watch it stay empty while your PDF is processed &mdash; that&rsquo;s the whole trust model.
           </p>
           <Link
             href="/privacy"
@@ -159,7 +237,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SEO / FAQ — light content for search visibility, compact accordion */}
+      {/* ── FAQ ──────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-3xl px-5 pb-20 pt-12 md:px-6">
         <h2 className="mb-2 text-center font-display text-2xl italic md:text-[1.75rem]">
           Frequently asked
@@ -182,9 +260,7 @@ export default function HomePage() {
                   +
                 </span>
               </summary>
-              <p className="mt-3.5 text-sm leading-relaxed text-text-secondary">
-                {item.a}
-              </p>
+              <p className="mt-3.5 text-sm leading-relaxed text-text-secondary">{item.a}</p>
             </details>
           ))}
         </div>
@@ -209,9 +285,7 @@ function Feature({
       </div>
       <div>
         <div className="text-sm font-medium text-text-primary">{title}</div>
-        <p className="mt-1 text-sm leading-snug text-text-secondary">
-          {body}
-        </p>
+        <p className="mt-1 text-sm leading-snug text-text-secondary">{body}</p>
       </div>
     </div>
   );
