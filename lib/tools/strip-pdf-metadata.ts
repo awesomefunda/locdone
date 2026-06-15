@@ -9,7 +9,7 @@
  * Everything runs in-browser; the file is never sent anywhere.
  */
 
-import { PDFDocument, PDFName, PDFDict, PDFHexString, PDFString } from 'pdf-lib';
+import { PDFDocument, PDFName, PDFDict } from 'pdf-lib';
 
 export type MetadataSnapshot = {
   title?: string;
@@ -40,6 +40,7 @@ export async function readPdfMetadata(file: File): Promise<MetadataSnapshot> {
   // Check for XMP stream in catalog
   let hasXmp = false;
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const catalog = (pdf as any).catalog as PDFDict;
     hasXmp = catalog.has(PDFName.of('Metadata'));
   } catch {
@@ -68,6 +69,7 @@ export async function stripPdfMetadata(file: File): Promise<Uint8Array> {
 
   // 1. Clear XMP metadata stream from the document catalog
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const catalog = (pdf as any).catalog as PDFDict;
     const metaKey = PDFName.of('Metadata');
     if (catalog.has(metaKey)) {
@@ -80,6 +82,7 @@ export async function stripPdfMetadata(file: File): Promise<Uint8Array> {
   // 2. Wipe all fields in the document Info dictionary
   //    Access the raw dict so we can delete *every* key (including custom ones)
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const context = (pdf as any).context;
     const infoRef = context.trailerInfo?.Info;
     if (infoRef) {
