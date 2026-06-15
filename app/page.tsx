@@ -2,6 +2,33 @@ import Link from 'next/link';
 import { ArrowRight, Zap, ShieldCheck, Infinity as InfinityIcon } from 'lucide-react';
 import { TOOLS } from '@/lib/tools-registry';
 
+const FAQ = [
+  {
+    q: 'Is Locdone really free?',
+    a: "Yes — every tool is free, with no daily limits, no watermarks, and no signup. Locdone runs in your browser, so there are no servers to pay for.",
+  },
+  {
+    q: 'Are my PDFs uploaded to a server?',
+    a: "No. All processing happens locally in your browser using open-source libraries (pdf-lib and pdf.js). You can verify this yourself — open your browser's Network tab and you'll see zero requests while a file is being processed.",
+  },
+  {
+    q: 'Do I need to create an account?',
+    a: "No account, no email, no sign-up. Open the site, drop a file, download the result.",
+  },
+  {
+    q: 'What file types are supported?',
+    a: "PDF files for merge, compress, organize, and redact; JPG and PNG images for conversion to PDF. Most browsers handle files up to around 100 MB smoothly.",
+  },
+  {
+    q: 'How is Locdone different from other online PDF tools?',
+    a: "Most \"online PDF\" tools upload your file to a server, process it there, then send it back. Locdone never uploads anything — your file stays in your browser tab from start to finish. That means it's private by design, works offline once loaded, and stays fast even for sensitive documents.",
+  },
+  {
+    q: 'Does it work on mobile?',
+    a: "Yes. Locdone works in any modern browser on desktop, iOS, and Android. It's also installable as a PWA.",
+  },
+];
+
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -189,30 +216,3 @@ function Feature({
     </div>
   );
 }
-
-const FAQ = [
-  {
-    q: 'Is Locdone really free?',
-    a: "Yes — every tool is free, with no daily limits, no watermarks, and no signup. Locdone runs in your browser, so there are no servers to pay for.",
-  },
-  {
-    q: 'Are my PDFs uploaded to a server?',
-    a: "No. All processing happens locally in your browser using open-source libraries (pdf-lib and pdf.js). You can verify this yourself — open your browser's Network tab and you'll see zero requests while a file is being processed.",
-  },
-  {
-    q: 'Do I need to create an account?',
-    a: "No account, no email, no sign-up. Open the site, drop a file, download the result.",
-  },
-  {
-    q: 'What file types are supported?',
-    a: "PDF files for merge, compress, organize, and redact; JPG and PNG images for conversion to PDF. Most browsers handle files up to around 100 MB smoothly.",
-  },
-  {
-    q: 'How is Locdone different from other online PDF tools?',
-    a: "Most \"online PDF\" tools upload your file to a server, process it there, then send it back. Locdone never uploads anything — your file stays in your browser tab from start to finish. That means it's private by design, works offline once loaded, and stays fast even for sensitive documents.",
-  },
-  {
-    q: 'Does it work on mobile?',
-    a: "Yes. Locdone works in any modern browser on desktop, iOS, and Android. It's also installable as a PWA.",
-  },
-];
