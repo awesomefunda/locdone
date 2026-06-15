@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Merge PDFs — Combine Files Locally | Locdone',
     description:
       'Combine PDFs in your browser. Your files never leave this device.',
-    url: 'https://locdone.com/merge-pdf',
+    url: 'https://www.locdone.com/merge-pdf',
   },
 };
 

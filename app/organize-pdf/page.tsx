@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Organize PDF — Reorder, Delete, Rotate Pages | Locdone',
     description:
       'Drag to reorder, click to delete, rotate pages — all in your browser.',
-    url: 'https://locdone.com/organize-pdf',
+    url: 'https://www.locdone.com/organize-pdf',
   },
 };
 

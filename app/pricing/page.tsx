@@ -9,9 +9,23 @@ export const metadata: Metadata = {
   alternates: { canonical: '/pricing' },
 };
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
 export default function PricingPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 md:px-6 md:py-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mx-auto max-w-2xl text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-pill border border-border-subtle bg-bg-raised px-3 py-1 font-mono text-[11px] text-text-secondary">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_6px_rgba(124,255,178,0.6)]" />

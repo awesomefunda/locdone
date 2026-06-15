@@ -2,9 +2,23 @@ import Link from 'next/link';
 import { ArrowRight, Zap, ShieldCheck, Infinity as InfinityIcon } from 'lucide-react';
 import { TOOLS } from '@/lib/tools-registry';
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
 export default function HomePage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero — compact, one screenful */}
       <section className="mx-auto max-w-3xl px-5 pt-14 text-center md:px-6 md:pt-20">
         <div className="mb-7 inline-flex items-center gap-2 rounded-pill border border-border-subtle bg-bg-raised px-3.5 py-1.5 font-mono text-[11px] text-text-secondary">

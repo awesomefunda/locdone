@@ -18,8 +18,25 @@ export function ToolPageLayout({
 }: ToolPageLayoutProps) {
   const relatedTools = TOOLS.filter((t) => t.slug !== tool.slug);
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="mx-auto max-w-2xl px-5 pb-10 pt-14 text-center md:px-6 md:pt-20">
         <h1 className="text-balance font-display text-[clamp(34px,6vw,54px)] italic leading-[1.05] tracking-tight">

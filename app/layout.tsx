@@ -33,7 +33,7 @@ const SITE_DESCRIPTION =
   'Free, private PDF tools. Convert JPG to PDF, merge, compress, organize, and redact PDFs right in your browser — no uploads, no signup, no watermarks. Your files never leave your device.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://locdone.com'),
+  metadataBase: new URL('https://www.locdone.com'),
   title: {
     default: SITE_TITLE,
     template: '%s | Locdone',
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://locdone.com',
+    url: 'https://www.locdone.com',
     siteName: 'Locdone',
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
@@ -125,17 +125,17 @@ export default function RootLayout({
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': 'https://locdone.com/#website',
-        url: 'https://locdone.com',
+        '@id': 'https://www.locdone.com/#website',
+        url: 'https://www.locdone.com',
         name: 'Locdone',
         description: SITE_DESCRIPTION,
         inLanguage: 'en-US',
       },
       {
         '@type': 'SoftwareApplication',
-        '@id': 'https://locdone.com/#app',
+        '@id': 'https://www.locdone.com/#app',
         name: 'Locdone',
-        url: 'https://locdone.com',
+        url: 'https://www.locdone.com',
         applicationCategory: 'Productivity',
         operatingSystem: 'Web Browser',
         description:

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Compress PDF — Reduce File Size Locally | Locdone',
     description:
       'Shrink PDF files in your browser without uploading them anywhere.',
-    url: 'https://locdone.com/compress-pdf',
+    url: 'https://www.locdone.com/compress-pdf',
   },
 };
 

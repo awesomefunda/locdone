@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: 'Scan Folder for PDFs',
   description:
     'Scan any local folder or repo for PDF files. Find, filter, download, and merge PDFs — all in your browser, nothing uploaded.',
+  alternates: { canonical: '/scan-folder' },
+  openGraph: {
+    title: 'Scan Folder for PDFs | Locdone',
+    description:
+      'Scan any local folder or repo for PDF files. Find, filter, download, and merge PDFs — all in your browser, nothing uploaded.',
+    url: 'https://www.locdone.com/scan-folder',
+  },
 };
 
 const HOW_IT_WORKS = [
@@ -42,9 +49,23 @@ const FAQ = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
 export default function ScanFolderPage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="mx-auto max-w-2xl px-5 pb-10 pt-14 text-center md:px-6 md:pt-20">
         <h1 className="text-balance font-display text-[clamp(34px,6vw,54px)] italic leading-[1.05] tracking-tight">

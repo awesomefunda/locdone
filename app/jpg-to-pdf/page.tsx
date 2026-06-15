@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'JPG to PDF — Convert Images Locally | Locdone',
     description:
       'Convert JPG and PNG images to PDF in your browser. Files never leave your device.',
-    url: 'https://locdone.com/jpg-to-pdf',
+    url: 'https://www.locdone.com/jpg-to-pdf',
   },
 };
 

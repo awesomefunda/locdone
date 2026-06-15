@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: 'Redact PDF — Black Out Sensitive Info Locally | Locdone',
     description:
       'Draw redactions over sensitive content in PDFs. Nothing uploaded, nothing tracked.',
-    url: 'https://locdone.com/redact-pdf',
+    url: 'https://www.locdone.com/redact-pdf',
   },
 };
 
