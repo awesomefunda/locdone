@@ -35,7 +35,9 @@ declare module 'lucide-react' {
   export const RotateCw: LucideIcon;
   export const Scissors: LucideIcon;
   export const Search: LucideIcon;
+  export const Hash: LucideIcon;
   export const ShieldCheck: LucideIcon;
+  export const ShieldOff: LucideIcon;
   export const Square: LucideIcon;
   export const Trash2: LucideIcon;
   export const UploadCloud: LucideIcon;

@@ -6,15 +6,15 @@ import { getTool } from '@/lib/tools-registry';
 const tool = getTool('redact-pdf')!;
 
 export const metadata: Metadata = {
-  title: 'Redact PDF — Black Out Sensitive Info Locally',
+  title: 'Redact PDF -- Permanently Remove Sensitive Text, No Upload',
   description:
-    'Draw redactions over sensitive content in PDFs. Nothing uploaded, nothing tracked — at locdone.com.',
+    'True PDF redaction: text is burned out of the page, not just covered with a black box. Free, private, runs in your browser. Nothing uploaded.',
   alternates: { canonical: '/redact-pdf' },
   openGraph: {
-    title: 'Redact PDF — Black Out Sensitive Info Locally | Locdone',
+    title: 'Redact PDF -- Permanent Redaction, No Upload | Locdone',
     description:
-      'Draw redactions over sensitive content in PDFs. Nothing uploaded, nothing tracked.',
-    url: 'https://www.locdone.com/redact-pdf',
+      'True PDF redaction: text is removed from the page, not just overlaid. Free, private, runs in your browser.',
+    url: 'https://locdone.com/redact-pdf',
   },
 };
 
@@ -25,7 +25,7 @@ export default function Page() {
       howItWorks={[
         {
           title: 'Drop a PDF',
-          body: 'Locdone renders each page in your browser. You stay in control — the file never leaves this tab.',
+          body: 'Locdone renders each page in your browser. You stay in control -- the file never leaves this tab.',
         },
         {
           title: 'Draw over what to hide',
@@ -33,7 +33,7 @@ export default function Page() {
         },
         {
           title: 'Save a flattened PDF',
-          body: 'Locdone rebuilds pages with redactions as part of the image. The text underneath is removed, not just covered.',
+          body: 'Locdone rasterizes redacted pages with the black areas burned in. The text underneath is gone from the file, not just covered.',
         },
       ]}
       faq={[
@@ -42,20 +42,20 @@ export default function Page() {
           a: 'Your PDF never leaves your device. Verify by closing your internet connection, then drop a PDF and apply redactions. Open DevTools (F12) Network tab and watch it stay empty during processing.',
         },
         {
-          q: 'Does "removed" really mean removed?',
-          a: 'Yes, within the redacted regions. Locdone rasterizes pages with redactions burned in — the original text isn\'t part of the output file anymore. You can confirm by trying to copy-paste from the redacted PDF.',
+          q: "What's the difference between true redaction and drawing a black box?",
+          a: 'Most "redact" tools layer a black rectangle on top of text -- but the original text is still in the file and can be extracted by selecting, copying, or running it through a PDF parser. Locdone rasterizes each redacted page into an image with those pixels simply gone. There is no underlying text to recover.',
         },
         {
-          q: 'Is this court-grade redaction?',
-          a: 'For legal redaction workflows, pair Locdone with a specialized tool that also scrubs metadata and hidden layers. Locdone handles the visible content thoroughly, which covers the large majority of practical cases.',
+          q: 'Is this HIPAA or court-filing compliant?',
+          a: "Locdone handles the visible content properly: redacted text is gone from the page. For thorough compliance, also strip the PDF's metadata (author, software, creation date) using our Strip PDF Metadata tool -- metadata can identify who created the document even after redaction.",
         },
         {
           q: 'Will pages without redactions stay text-searchable?',
-          a: 'Yes. Locdone copies untouched pages verbatim. Only pages with redactions are flattened.',
+          a: 'Yes. Locdone copies untouched pages verbatim as vector content. Only pages with redactions are flattened to images.',
         },
         {
           q: 'Can I redact on mobile?',
-          a: 'Touch drawing works in most mobile browsers. Precision is easier on a trackpad or mouse.',
+          a: 'Touch drawing works in most mobile browsers. Precision is easier on a trackpad or mouse for small areas of text.',
         },
       ]}
     >

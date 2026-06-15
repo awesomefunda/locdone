@@ -3,11 +3,38 @@ import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Pricing — Locdone is 100% free',
+  title: 'Pricing -- Locdone is 100% free',
   description:
     'Locdone is completely free. Every PDF tool, every feature, no signup, no daily limits, no watermarks. No hidden costs.',
   alternates: { canonical: '/pricing' },
 };
+
+const FAQ = [
+  {
+    q: 'Is Locdone really completely free?',
+    a: "Yes. Every tool, every feature, no signup, no daily limits, no watermarks. There's no hidden cost.",
+  },
+  {
+    q: "What's the catch?",
+    a: "There isn't one. Locdone runs entirely in your browser, so there are no server costs to offset with ads or subscriptions. You use your own device's CPU to process your own files.",
+  },
+  {
+    q: 'Will it stay free?',
+    a: "The current tools will. If we ever add advanced features (batch processing, huge files, etc.), those might be paid -- but what's available today will remain free.",
+  },
+  {
+    q: 'Can I use Locdone for commercial work?',
+    a: 'Yes. No restriction on commercial use. The processing core is MIT-licensed.',
+  },
+  {
+    q: 'Are there ads?',
+    a: 'No ads, no tracking, no analytics that follow you around the web. Locdone does not run any third-party scripts.',
+  },
+  {
+    q: 'Do I need to create an account?',
+    a: 'No account, no email, no sign-up. Open the site, drop a file, download the result.',
+  },
+];
 
 export default function PricingPage() {
   const faqJsonLd = {
@@ -72,14 +99,12 @@ export default function PricingPage() {
         </div>
       </div>
 
-      {/* Honest line about sustainability */}
       <p className="mx-auto mt-8 max-w-lg text-center text-[13px] leading-relaxed text-text-tertiary">
         Locdone has no servers to run, so it costs almost nothing to operate.
-        If we ever introduce paid features, the current tools will stay free —
+        If we ever introduce paid features, the current tools will stay free --
         forever.
       </p>
 
-      {/* Small FAQ */}
       <div className="mx-auto mt-16 max-w-2xl">
         <h2 className="mb-8 text-center font-display text-2xl italic md:text-3xl">
           Questions
@@ -115,37 +140,10 @@ function FeatureList({ items }: { items: string[] }) {
     <ul className="space-y-3">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-2.5 text-sm">
-          <Check
-            size={16}
-            strokeWidth={2.25}
-            className="mt-0.5 shrink-0 text-accent"
-          />
+          <Check size={16} strokeWidth={2.25} className="mt-0.5 shrink-0 text-accent" />
           <span className="text-text-primary">{item}</span>
         </li>
       ))}
     </ul>
   );
 }
-
-const FAQ = [
-  {
-    q: 'Is Locdone really completely free?',
-    a: "Yes. Every tool, every feature, no signup, no daily limits, no watermarks. There's no hidden cost.",
-  },
-  {
-    q: "What's the catch?",
-    a: "There isn't one. Locdone runs entirely in your browser, so there are no server costs to offset with ads or subscriptions. You use your own device's CPU to process your own files.",
-  },
-  {
-    q: 'Will it stay free?',
-    a: "The current tools will. If we ever add advanced features (batch processing, huge files, etc.), those might be paid — but what's available today will remain free.",
-  },
-  {
-    q: 'Can I use Locdone for commercial work?',
-    a: 'Yes. No restriction on commercial use. The processing core is MIT-licensed.',
-  },
-  {
-    q: 'Are there ads?',
-    a: 'No ads, no tracking, no analytics that follow you around the web.',
-  },
-];
