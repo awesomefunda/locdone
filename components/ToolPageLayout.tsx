@@ -3,11 +3,14 @@ import { ArrowRight } from 'lucide-react';
 import { TOOLS, type Tool } from '@/lib/tools-registry';
 import { PrivacyStrip } from './PrivacyStrip';
 
+type RelatedArticle = { title: string; slug: string };
+
 type ToolPageLayoutProps = {
   tool: Tool;
   children: React.ReactNode;
   howItWorks: { title: string; body: string }[];
   faq: { q: string; a: string }[];
+  relatedArticles?: RelatedArticle[];
 };
 
 export function ToolPageLayout({
@@ -15,6 +18,7 @@ export function ToolPageLayout({
   children,
   howItWorks,
   faq,
+  relatedArticles,
 }: ToolPageLayoutProps) {
   const relatedTools = TOOLS.filter((t) => t.slug !== tool.slug);
 
@@ -48,7 +52,7 @@ export function ToolPageLayout({
         </p>
       </section>
 
-      {/* Tool surface — the live interaction area */}
+      {/* Tool surface */}
       <section className="mx-auto max-w-2xl px-5 pb-8 md:px-6">
         {children}
         <div className="mt-7">
@@ -109,6 +113,32 @@ export function ToolPageLayout({
           ))}
         </div>
       </section>
+
+      {/* Related articles */}
+      {relatedArticles && relatedArticles.length > 0 && (
+        <section className="mx-auto max-w-2xl px-5 pb-10 pt-0 md:px-6">
+          <div className="mb-3 font-mono text-[11px] uppercase tracking-widest text-text-tertiary">
+            From the blog
+          </div>
+          <div className="space-y-2">
+            {relatedArticles.map((a) => (
+              <Link
+                key={a.slug}
+                href={`/blog/${a.slug}`}
+                className="group flex items-center justify-between gap-3 rounded-lg border border-border-subtle bg-bg-raised px-4 py-3 transition-all hover:border-accent/40 hover:bg-bg-elevated"
+              >
+                <span className="text-sm text-text-secondary group-hover:text-text-primary">
+                  {a.title}
+                </span>
+                <ArrowRight
+                  size={13}
+                  className="shrink-0 text-text-tertiary transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                />
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Related tools */}
       <section className="mx-auto max-w-5xl px-5 pb-16 pt-4 md:px-6">

@@ -62,6 +62,10 @@ export default function Page() {
           a: 'Set the starting number on each PDF to continue from where the previous one ended. For example, if the first PDF has 47 pages starting at 1, set the second PDF\'s starting number to 48.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'bates-numbering-pdf-free', title: 'How to Add Bates Numbers to a PDF for Free' },
+      ]}
     >
       <BatesNumberPdfClient />
     </ToolPageLayout>

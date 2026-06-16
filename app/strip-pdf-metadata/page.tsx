@@ -58,6 +58,11 @@ export default function Page() {
           a: 'No — they solve different problems. Redaction removes visible content from pages (text and images). Metadata stripping removes hidden identifying information embedded in the file itself. For thorough compliance prep, do both.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'remove-pdf-metadata-before-sharing', title: 'How to Remove Hidden Metadata from a PDF Before Sharing' },
+        { slug: 'hipaa-compliant-pdf-tools', title: 'HIPAA-Compliant PDF Tools That Are Actually Free' },
+      ]}
     >
       <StripPdfMetadataClient />
     </ToolPageLayout>

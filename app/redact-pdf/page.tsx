@@ -58,6 +58,11 @@ export default function Page() {
           a: 'Touch drawing works in most mobile browsers. Precision is easier on a trackpad or mouse for small areas of text.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'redact-pdf-before-uploading-to-ai', title: 'How to Redact a PDF Before Uploading to ChatGPT or Any AI Tool' },
+        { slug: 'hipaa-compliant-pdf-tools', title: 'HIPAA-Compliant PDF Tools That Are Actually Free' },
+      ]}
     >
       <RedactPdfClient />
     </ToolPageLayout>

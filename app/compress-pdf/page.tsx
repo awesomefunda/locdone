@@ -58,6 +58,10 @@ export default function Page() {
           a: 'Especially well. Scans are already image-based, so Locdone\'s approach compresses them aggressively without visible quality loss.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'oci-card-pdf-documents', title: 'How to Prepare PDF Documents for Your OCI Card Application' },
+      ]}
     >
       <CompressPdfClient />
     </ToolPageLayout>

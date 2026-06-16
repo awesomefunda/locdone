@@ -58,6 +58,11 @@ export default function Page() {
           a: 'No. Locdone has no login system. There\'s nothing to sign up for.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'how-to-merge-pdfs-without-uploading', title: 'How to Merge PDFs Without Uploading to a Server' },
+        { slug: 'oci-card-pdf-documents', title: 'How to Prepare PDF Documents for Your OCI Card Application' },
+      ]}
     >
       <MergePdfClient />
     </ToolPageLayout>

@@ -58,6 +58,10 @@ export default function Page() {
           a: 'Free forever. The Locdone Pro upgrade unlocks batch convenience features and larger file handling. The core tool is unconditional.',
         },
       ]}
+    
+      relatedArticles={[
+        { slug: 'oci-card-pdf-documents', title: 'How to Prepare PDF Documents for Your OCI Card Application' },
+      ]}
     >
       <JpgToPdfClient />
     </ToolPageLayout>
