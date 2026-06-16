@@ -43,7 +43,7 @@ export function Nav() {
           </span>
         </Link>
 
-        {/* Desktop nav — minimal: just Tools + Privacy */}
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-0.5 md:flex">
           <div ref={menuRef} className="relative">
             <button
@@ -92,6 +92,13 @@ export function Nav() {
           </div>
 
           <Link
+            href="/blog"
+            className="rounded-md px-3 py-1.5 text-sm text-text-secondary transition-colors duration-150 hover:bg-bg-raised hover:text-text-primary"
+          >
+            Blog
+          </Link>
+
+          <Link
             href="/privacy"
             className="rounded-md px-3 py-1.5 text-sm text-text-secondary transition-colors duration-150 hover:bg-bg-raised hover:text-text-primary"
           >
@@ -137,6 +144,12 @@ export function Nav() {
               </Link>
             ))}
             <div className="mt-1.5 border-t border-border-subtle pt-1.5">
+              <Link
+                href="/blog"
+                className="block rounded-md px-3 py-2.5 text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-text-primary"
+              >
+                Blog
+              </Link>
               <Link
                 href="/privacy"
                 className="block rounded-md px-3 py-2.5 text-sm text-text-secondary transition-colors hover:bg-bg-elevated hover:text-text-primary"
