@@ -75,4 +75,15 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Blog prose */
+  .prose-locdone a {
+    @apply text-accent hover:underline;
+  }
+  .prose-locdone strong {
+    @apply text-text-primary font-medium;
+  }
+  .prose-locdone code {
+    @apply rounded bg-bg-elevated px-1.5 py-0.5 font-mono text-xs text-accent;
+  }
 }

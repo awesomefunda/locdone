@@ -19,5 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/scan-folder`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
+    // Blog
+    { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.85 },
+    { url: `${BASE}/blog/redact-pdf-before-uploading-to-ai`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/blog/oci-card-pdf-documents`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/blog/how-to-merge-pdfs-without-uploading`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/blog/hipaa-compliant-pdf-tools`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/blog/remove-pdf-metadata-before-sharing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/blog/bates-numbering-pdf-free`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ];
 }

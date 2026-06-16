@@ -12,6 +12,7 @@ declare module 'lucide-react' {
   >;
 
   export const AlertCircle: LucideIcon;
+  export const ArrowLeft: LucideIcon;
   export const ArrowRight: LucideIcon;
   export const Check: LucideIcon;
   export const CheckSquare: LucideIcon;
@@ -27,6 +28,7 @@ declare module 'lucide-react' {
   export const FolderSearch: LucideIcon;
   export const GitMerge: LucideIcon;
   export const GripVertical: LucideIcon;
+  export const Hash: LucideIcon;
   export const Infinity: LucideIcon;
   export const LayoutGrid: LucideIcon;
   export const Lock: LucideIcon;
@@ -35,7 +37,6 @@ declare module 'lucide-react' {
   export const RotateCw: LucideIcon;
   export const Scissors: LucideIcon;
   export const Search: LucideIcon;
-  export const Hash: LucideIcon;
   export const ShieldCheck: LucideIcon;
   export const ShieldOff: LucideIcon;
   export const Square: LucideIcon;
